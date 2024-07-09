@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Register.module.css';
 import { useFormik } from 'formik';
 import RegImg from '../../../src/Assets/images/Login.gif';
 import * as yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Register() {
-  function submitRegister(values) {
-    console.log(values);
+  const [error , setError] = useState(null)
+  async  function submitRegister(values) {
+    let navigate = useNavigate;
+    let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,values)
+    .catch((err)=>setError(err.response.data.message))
+    if (data.message === 'success' ){
+      navigate('/login');
+    }
+    console.log(data);
   }
 
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -49,6 +59,7 @@ export default function Register() {
           <div className="col-md-6 my-5 px-3">
             <div className="form">
               <form onSubmit={formik.handleSubmit}>
+                {error !== null ? <div className="alert alert-danger">{error}</div> :""}
                 <label htmlFor="name">Name</label>
                 <input
                   className='form-control mb-3'

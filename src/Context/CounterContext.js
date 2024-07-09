@@ -1,8 +1,10 @@
 import {createContext} from 'react';
 
-let counterContext = createContext();
+export let counterContext = createContext();
 
 
-function counterContextProvider(){
-    return
+function counterContextProvider(props){
+    return <counterContext.provider>
+        {(props.children)}
+    </counterContext.provider>
 }
