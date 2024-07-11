@@ -8,12 +8,19 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Register() {
-  const [error , setError] = useState(null)
+  const [error , setError] = useState(null);
+  const [isLoading , setIsloading]= useState(false);
   async  function submitRegister(values) {
     let navigate = useNavigate;
+    setIsloading(true);
     let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,values)
-    .catch((err)=>setError(err.response.data.message))
-    if (data.message === 'success' ){
+    .catch(
+      (err)=>{
+        setIsloading(false);
+        setError(err.response.data.message)
+      })
+    if (data.message === 'success'){
+      setIsloading(false)
       navigate('/login');
     }
     console.log(data);
@@ -124,8 +131,9 @@ export default function Register() {
                   placeholder="Enter your phone number"
                 />
                 {formik.errors.phone && formik.touched.phone ? <div className="alert alert-danger p-2">{formik.errors.phone}</div> : ''}
-
-                <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Submit</button>
+                {isLoading ? <button tybe="button" className='btn bg-main text-white'>
+                  <i className='fas fa-spinner fa-spin'></i>
+                </button> : <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Submit</button>}
               </form>
             </div>
           </div>

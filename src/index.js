@@ -5,8 +5,14 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+let queryClient = new QueryClient();
 root.render(
-    <App />
+    <QueryClientProvider client={queryClient}>
+        <App />
+        <ReactQueryDevtools initialIsOpen={false} position='top-right'/>
+    </QueryClientProvider>
 );
