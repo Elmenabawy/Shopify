@@ -4,7 +4,6 @@ import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
 
 export default function Products() {
   return <>
-    <h1>Products</h1>
     <FeaturedProducts />
   </>
 }
