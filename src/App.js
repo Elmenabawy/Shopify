@@ -11,6 +11,7 @@ import Layout from './Components/Layout/Layout'
 import UserContextProvider from './Context/UserContext';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
+import CartContextProvider from './Context/CartContext';
 let routes = createBrowserRouter([
   { path: '/', element: <Layout />, children: [
     { index: true, element: <ProtectedRoute> <Home /></ProtectedRoute> },
@@ -25,9 +26,12 @@ let routes = createBrowserRouter([
 ])
 
 function App() {
-  return <UserContextProvider>
-    <RouterProvider router={routes}></RouterProvider>
-  </UserContextProvider>
+  return  <CartContextProvider>
+            <UserContextProvider>
+              <RouterProvider router={routes}></RouterProvider>
+            </UserContextProvider>
+         </CartContextProvider>
+   
 }
 
 export default App;

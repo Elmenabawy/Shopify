@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './FeaturedProducts.module.css';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../Context/CartContext';
 
 export default function FeaturedProducts() {
+  const { addToCart } = useContext(CartContext);
+
+  async function addProduct(productId) {
+    try {
+      const response = await addToCart(productId);
+      console.log(response);
+      // Optionally show a success message to the user
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      // Optionally show an error message to the user
+    }
+  }
+
   function getFeaturedProducts() {
     return axios.get('https://ecommerce.routemisr.com/api/v1/products');
   }
 
   const { data, isLoading } = useQuery('FeaturedProducts', getFeaturedProducts);
-  const products = data?.data.data;
+  const products = data?.data?.data || [];
 
   return (
     <div className="py-2">
-      <h2>FeaturedProducts</h2>
+      <h2>Featured Products</h2>
       <div className="row">
         {isLoading ? (
           Array(6).fill(0).map((_, index) => (
@@ -41,10 +55,10 @@ export default function FeaturedProducts() {
                     <span>{product.price} EGP</span>
                     <span><i className='fas fa-star rating-color'></i> {product.ratingsAverage}</span>
                   </div>
-                  <button className='btn bg-main text-white w-100 btn-sm mt-2'>add to cart</button>
+                  
                 </div>
               </Link>
-              
+              <button onClick={() => addProduct(product.id)} className='btn bg-main text-white w-100 btn-sm mt-2'>Add to Cart</button>
             </div>
           ))
         )}
