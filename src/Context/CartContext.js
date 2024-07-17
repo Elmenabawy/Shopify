@@ -22,9 +22,21 @@ export default function CartContextProvider({ children }) {
                 throw error;
             });
     }
+    function getLoggedUserCart(){
+        return axios.get('https://ecommerce.routemisr.com/api/v1/cart',{
+            headers
+        }).then((response)=>response)
+        .catch((error)=>error)
+    }
+    function removeFromCart(productId) {
+        return axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,{
+            headers
+        }).then((response)=>response)
+        .catch((err)=>err)
+    }
 
     return (
-        <CartContext.Provider value={{ addToCart }}>
+        <CartContext.Provider value={{ addToCart, getLoggedUserCart, removeFromCart }}>
             {children}
         </CartContext.Provider>
     );

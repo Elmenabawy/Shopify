@@ -1,1 +1,4 @@
-.Cart {}
+.noBorder {
+  border: none;
+  background: none;
+}

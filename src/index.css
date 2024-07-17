@@ -12,6 +12,15 @@
 body{
     font-family: var(--font-family) !important;
 }
+.network{
+    padding: 20px;
+    background-color: #fff;
+    position: fixed;
+    bottom: 30;
+    left: 30;
+    z-index: 9999;
+    box-shadow: var(--shadow);
+}
 .rating-color
 {
     color: var(--rating-color);
@@ -47,7 +56,7 @@ a , a:hover{
 }
 .text-main
 {
-    color: var(--main-color);
+    color: var(--main-color) !important;
 }
 .bg-main
 {

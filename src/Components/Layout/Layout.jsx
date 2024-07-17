@@ -3,6 +3,7 @@ import styles from './Layout.module.css';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar'
 import { UserContext } from '../../Context/UserContext';
+import {Online , Offline} from 'react-detect-offline'
 export default function Layout() {
   let {setUserToken} = useContext(UserContext);
   useEffect(()=>{
@@ -17,7 +18,13 @@ export default function Layout() {
   <div className="container">
       <Outlet></Outlet>
   </div>
-  
+  <div>
+    <Offline>
+      <div className='network'>
+        <i className='fas fa-wifi'> </i>You are Offline
+      </div>
+    </Offline>
+  </div>
 
   </>
 }

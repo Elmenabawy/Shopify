@@ -1,5 +1,6 @@
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Home from './Components/Home/Home'
 import Products from './Components/Products/Products'
 import Cart from './Components/Cart/Cart'
@@ -30,6 +31,7 @@ function App() {
             <UserContextProvider>
               <RouterProvider router={routes}></RouterProvider>
             </UserContextProvider>
+    <Toaster />
          </CartContextProvider>
    
 }

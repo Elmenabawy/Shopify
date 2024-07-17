@@ -6,6 +6,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
+import toast from 'react-hot-toast';
 
 export default function FeaturedProducts() {
   const { addToCart } = useContext(CartContext);
@@ -14,10 +15,10 @@ export default function FeaturedProducts() {
     try {
       const response = await addToCart(productId);
       console.log(response);
-      // Optionally show a success message to the user
+      toast.success('Product is successfully added');
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      // Optionally show an error message to the user
+      toast.error('Something went wrong');
     }
   }
 
@@ -55,7 +56,6 @@ export default function FeaturedProducts() {
                     <span>{product.price} EGP</span>
                     <span><i className='fas fa-star rating-color'></i> {product.ratingsAverage}</span>
                   </div>
-                  
                 </div>
               </Link>
               <button onClick={() => addProduct(product.id)} className='btn bg-main text-white w-100 btn-sm mt-2'>Add to Cart</button>
