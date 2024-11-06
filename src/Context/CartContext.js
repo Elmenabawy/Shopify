@@ -5,7 +5,7 @@ export const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
     const token = localStorage.getItem('userToken');
-    const headers = token ? { token: token } : {}; // Updated header key to 'token'
+    const headers = token ? { token: token } : {}; 
 
     function addToCart(productId) {
         return axios.post('https://ecommerce.routemisr.com/api/v1/cart', {

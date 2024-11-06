@@ -61,7 +61,7 @@ export default function Register() {
       <div className="container w-75 mx-auto shadow-l rounded my-3 py-3">
         <div className="row">
           <div className="col-md-6">
-            <img src={RegImg} alt="Registeration-img" className='w-100 mt-4' />
+            <img src={RegImg} alt="Registration-img" className='w-100 mt-4' />
           </div>
           <div className="col-md-6 my-5 px-3">
             <div className="form">
@@ -131,7 +131,7 @@ export default function Register() {
                   placeholder="Enter your phone number"
                 />
                 {formik.errors.phone && formik.touched.phone ? <div className="alert alert-danger p-2">{formik.errors.phone}</div> : ''}
-                {isLoading ? <button tybe="button" className='btn bg-main text-white'>
+                {isLoading ? <button type="button" className='btn bg-main text-white'>
                   <i className='fas fa-spinner fa-spin'></i>
                 </button> : <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Submit</button>}
               </form>
