@@ -8,16 +8,17 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Register() {
+  const navigate = useNavigate();
   const [error , setError] = useState(null);
   const [isLoading , setIsloading]= useState(false);
   async  function submitRegister(values) {
-    let navigate = useNavigate;
+    
     setIsloading(true);
-    let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,values)
+    const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,values)
     .catch(
       (err)=>{
         setIsloading(false);
-        setError(err.response.data.message)
+        setError(err.response?.data.message)
       })
     if (data.message === 'success'){
       setIsloading(false)

@@ -10,7 +10,8 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();  
-  let {setUserToken} = useContext(UserContext);
+  let { setUserData,setUserToken} = useContext(UserContext);
+
   async function submitLogin(values) {
     setIsLoading(true);
     try {
@@ -18,6 +19,7 @@ export default function Login() {
       if (data.message === 'success') {
         localStorage.setItem('userToken', data.token);
         setUserToken(data.token);
+        setUserData(data.user);
         setIsLoading(false);
         navigate('/');
       }
@@ -49,9 +51,9 @@ export default function Login() {
 
   return (
     <div className="container w-75 mx-auto shadow-l rounded my-3 py-3">
-      <div className="row">
+      <div className="row d-flex justify-content-center align-items-center " >
         <div className="col-md-6">
-          <img src={RegImg} alt="Registeration-img" className='w-100 mt-4 ' />
+          <img src={RegImg} alt="Registration-img" className='w-100 mt-4 ' />
         </div>
         <div className="col-md-6 my-5">
           <div className="form">

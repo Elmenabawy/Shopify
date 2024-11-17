@@ -27,7 +27,7 @@ export default function CategorySlider() {
 
   return <>
     {data?.data.data ?
-    <div className='py-4'>
+    <div className='py-5 my-5'>
         <Slider {...settings}>
           {data?.data.data.map((category) => (
             <img height={200} key={category._id} src={category.image} className='w-100' alt={category.name} />

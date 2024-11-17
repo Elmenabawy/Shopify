@@ -12,6 +12,7 @@ export default function Home() {
   </Helmet>
     <MainSlider />
     <CategorySlider />
+    <h2 className='text-center'>Featured Products</h2>
     <FeaturedProducts />
   </>
 }

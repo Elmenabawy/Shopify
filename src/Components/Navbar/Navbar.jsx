@@ -41,17 +41,18 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">Cart</Link>
               </li>
+              <li className="nav-item">
+                
+              </li>
 
             </ul>
           </> : ''}
           
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item d-flex align-items-center">
-              <i className='fab mx-2 fa-facebook'></i>
-              <i className='fab mx-2 fa-twitter'></i>
-              <i className='fab mx-2 fa-instagram'></i>
-              <i className='fab mx-2 fa-youtube'></i>
-              <i className='fab mx-2 fa-tiktok'></i>
+              <Link className="nav-link" to="/profile">
+              <i className="fa-solid fa-user"></i>
+              </Link>
             </li>
             {userToken !== null ? <li className="nav-item">
               <span onClick={()=> logout()} className="nav-link cursor-pointer" >Logout</span>

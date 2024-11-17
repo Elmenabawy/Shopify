@@ -30,12 +30,11 @@ export default function FeaturedProducts() {
   const products = data?.data?.data || [];
 
   return (
-    <div className="py-2">
-      <h2>Featured Products</h2>
-      <div className="row">
+    <div className="py-5 my-5">
+      <div className="row gy-3">
         {isLoading ? (
           Array(6).fill(0).map((_, index) => (
-            <div key={index} className="col-md-2">
+            <div key={index} className="col-lg-2 col-sm-4">
               <div className="product cursor-pointer py-3 px-2">
                 <Skeleton height={200} />
                 <Skeleton count={3} />
@@ -46,9 +45,9 @@ export default function FeaturedProducts() {
           ))
         ) : (
           products.map((product) => (
-            <div key={product.id} className="col-md-2">
+            <div key={product.id} className="product col-lg-2 col-sm-4 100-vh ">
               <Link to={`/productdetails/${product.id}`}>
-                <div className="product cursor-pointer py-3 px-2">
+                <div className="cursor-pointer py-3 px-2">
                   <img src={product.imageCover} alt={product.title} className="w-100" />
                   <span className='text-main font-sm fw-bolder'>{product.category.name}</span>
                   <h3 className="h6">{product.title.split(' ').slice(0, 2).join(' ')}</h3>
@@ -58,7 +57,7 @@ export default function FeaturedProducts() {
                   </div>
                 </div>
               </Link>
-              <button onClick={() => addProduct(product.id)} className='btn bg-main text-white w-100 btn-sm mt-2'>Add to Cart</button>
+              <button onClick={() => addProduct(product.id)} className='btn bg-main text-white w-100 btn-sm my-2'>Add to Cart</button>
             </div>
           ))
         )}

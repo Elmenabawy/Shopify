@@ -29,7 +29,7 @@ export default function ProductDetails() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
   }
   const { data, isLoading, error } = useQuery('productDetails', () => getProductDetails(params.id))
-  
+
 
   console.log(data);
   return <>
