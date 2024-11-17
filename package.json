@@ -1,6 +1,7 @@
 {
-  "name": "finalproject",
+  "name": "fresh-cart",
   "version": "0.1.0",
+  "description": "Fresh-cart Ecommerce is a cutting-edge, user-friendly online shopping platform designed to provide a seamless and convenient shopping experience for customers. Specializing in fresh products, groceries, and essentials, Fresh-cart offers a wide range of quality items delivered straight to your door. With an intuitive interface, advanced search functionality, and personalized recommendations, Fresh-cart helps users find exactly what they need in just a few clicks.",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
