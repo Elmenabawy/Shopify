@@ -41,20 +41,18 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">Cart</Link>
               </li>
-              <li className="nav-item">
-                
-              </li>
+
 
             </ul>
           </> : ''}
           
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item d-flex align-items-center">
-              <Link className="nav-link" to="/profile">
-              <i className="fa-solid fa-user"></i>
-              </Link>
-            </li>
             {userToken !== null ? <li className="nav-item">
+              <li className="nav-item d-flex align-items-center">
+                <Link className="nav-link" to="/profile">
+                  <i className="fa-solid fa-user"></i>
+                </Link>
+              </li>
               <span onClick={()=> logout()} className="nav-link cursor-pointer" >Logout</span>
             </li> 
             :<>
